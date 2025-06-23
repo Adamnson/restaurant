@@ -1,0 +1,34 @@
+.container {
+  border: 1rem solid purple;
+}
+
+.items-menu {
+  margin: 2rem;
+  min-height: 80vw;
+  border: 0.5rem dotted gold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.item {
+  min-height: 5rem;
+  min-width: 40%;
+  margin: 2rem;
+  border: 5px dotted whitesmoke;
+  display: grid;
+  grid-template-rows: 1fr/ 1fr 1fr;
+}
+
+.image{
+  background-color: hotpink;
+  min-height: 15vw;
+}
+
+.dish {
+  min-height: 15vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
