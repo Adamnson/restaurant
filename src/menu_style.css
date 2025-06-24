@@ -12,23 +12,33 @@
 }
 
 .item {
-  min-height: 5rem;
-  min-width: 40%;
+  min-height: 8rem;
+  min-width: max(8rem,40%);
   margin: 2rem;
+  padding: 0.5rem;
   border: 5px dotted whitesmoke;
+  border-radius: 1rem;
   display: grid;
   grid-template-rows: 1fr/ 1fr 1fr;
+  background-color: palegreen;
 }
 
 .image{
   background-color: hotpink;
   min-height: 15vw;
+  border-radius: 0.5rem;
 }
 
 .dish {
   min-height: 15vw;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
+  font-size: 1.5rem;
+}
+
+.name {
+  max-width: 50%;
+  text-wrap: wrap;
 }

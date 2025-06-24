@@ -21,21 +21,27 @@ export function showMenu() {
 
 function addItemToMenu(item, price){
 
-  let menu_item_div = document.createElement("div");
-  menu_item_div.setAttribute("class", "item");
+  let menu_item_btn = document.createElement("button");
+  menu_item_btn.setAttribute("class", "item");
+  menu_item_btn.classList.add(item.split(" ").join("-"))
   let image_placeholder = document.createElement('div');
   image_placeholder.setAttribute('class',"image");
+  image_placeholder.classList.add( item.split(" ").join("-"));;
   let dish_div = document.createElement('div');
   dish_div.setAttribute("class", "dish");
-  let btn_item = document.createElement("button");
+  dish_div.classList.add(item.split(" ").join("-"));;
+  let btn_item = document.createElement("div");
+  btn_item.setAttribute('class',"name")
+  btn_item.classList.add( item.split(" ").join("-"));
   btn_item.innerHTML = item;
   let price_item = document.createElement("div");
-  price_item.innerHTML = price;
+  price_item.classList.add( item.split(" ").join("-"));  price_item.innerHTML = price;
   
-  menu_item_div.appendChild(image_placeholder);
+  menu_item_btn.appendChild(image_placeholder);
   dish_div.appendChild(btn_item);
   dish_div.appendChild(price_item);
-  menu_item_div.appendChild(dish_div);
-  return menu_item_div;
+  menu_item_btn.appendChild(dish_div);
+  menu_item_btn.addEventListener('click', (ev) => {console.log(ev.target.getAttribute('class'))});
+  return menu_item_btn;
 }
 
