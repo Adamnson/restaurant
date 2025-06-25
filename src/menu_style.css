@@ -11,9 +11,18 @@
   align-items: center;
 }
 
+.itemContainer {
+  min-width: 80%;
+  border: 0.5rem solid greenyellow;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 .item {
   min-height: 8rem;
-  min-width: max(8rem,40%);
+  min-width: max(8rem,min(40%,20rem));
   margin: 2rem;
   padding: 0.5rem;
   border: 5px dotted whitesmoke;
@@ -45,13 +54,23 @@
 
 .quantity {
   border-radius:  50%;
-  height: 2rem;
-  width: 2rem;
+  height: 3rem;
+  width: 3rem;
+  font-size: 1.2rem;
   background-color: red;
-  position: relative;
-  top: -555%;
-  right: -100%;
+  position: absolute;
+  /* top: 12%; */
+  /* bottom: 2rem; */
+  left: max(5rem,min(60%,85rem)) ;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.plus,
+.minus {
+  border-radius: 50%;
+  height: 5rem;
+  width: 5rem;
+  font-size: 1.5rem;
 }

@@ -25,6 +25,17 @@ export function showMenu() {
 
 function addItemToMenu(item, price, img){
 
+  let item_container = document.createElement('div');
+  item_container.setAttribute('class', "itemContainer");
+  let btn_plus = document.createElement("button");
+  btn_plus.setAttribute('class', "plus");
+  btn_plus.innerHTML = "+";
+  btn_plus.addEventListener("click", () => {updateItemInCart(menu_item_btn.id, "+")});
+  let btn_minus = document.createElement("button");
+  btn_minus.setAttribute('class', "minus");
+  btn_minus.innerHTML = "-";
+  btn_minus.addEventListener("click", () => {updateItemInCart(menu_item_btn.id, "-")});
+
   let menu_item_btn = document.createElement("button");
   menu_item_btn.setAttribute("class", "item");
   menu_item_btn.setAttribute("id", item.split(" ").join("-"))
@@ -58,24 +69,37 @@ function addItemToMenu(item, price, img){
   dish_div.appendChild(btn_item);
   dish_div.appendChild(price_item);
   menu_item_btn.appendChild(dish_div);
-  menu_item_btn.addEventListener('click', () => {updateItemInCart(menu_item_btn.id) });
+  // menu_item_btn.addEventListener('click', () => {updateItemInCart(menu_item_btn.id) });
   
-  return menu_item_btn;
+  item_container.appendChild(btn_minus);
+  item_container.appendChild(menu_item_btn);
+  item_container.appendChild(btn_plus);
+  return item_container;
 }
 
 
-function updateItemInCart(item_id){
-  console.log(`${item_id} was added to cart`);
-  cart[item_id]++;
+function updateItemInCart(item_id, sign){
+  if (sign === "+"){
+    cart[item_id]++;
+    console.log(`1 more ${item_id} was added to cart`);
+  }else if (sign === "-"){
+    if (cart[item_id]){
+      cart[item_id]--;
+      console.log(`1 ${item_id} was removed from cart`);
+    }
+    else {
+      console.log(`no more ${item_id} in cart`);
+    }
+  }
   console.log(cart) 
   dispalyItemNumberCircle(item_id);
 }
 
 function dispalyItemNumberCircle(item_id){
+  let circle = document.querySelector(`#${item_id} .quantity`);
   if (cart[item_id]) {
-    let circle = document.querySelector(`#${item_id} .quantity`);
-    console.log(circle);
     if (circle){
+      circle.style.display = "";
       circle.innerHTML = cart[item_id];
     }
     else{
@@ -85,5 +109,7 @@ function dispalyItemNumberCircle(item_id){
       let el = document.querySelector(`#${item_id}`);
       el.appendChild(circle);
     }
+  }else {
+    circle.style.display = 'none';
   }
 }
