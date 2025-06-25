@@ -42,3 +42,16 @@
   max-width: 50%;
   text-wrap: wrap;
 }
+
+.quantity {
+  border-radius:  50%;
+  height: 2rem;
+  width: 2rem;
+  background-color: red;
+  position: relative;
+  top: -555%;
+  right: -100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

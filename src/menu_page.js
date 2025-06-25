@@ -5,7 +5,7 @@ import pizzaPic from "./pizza.jpg"
 import pohaPic from "./poha.jpg"
 
 const content_div = document.querySelector("#content");
-
+let cart = {};
 export function showMenu() {
   // console.log("menu button was clicked");
   // content_div.innerHTML = menu;
@@ -28,6 +28,7 @@ function addItemToMenu(item, price, img){
   let menu_item_btn = document.createElement("button");
   menu_item_btn.setAttribute("class", "item");
   menu_item_btn.setAttribute("id", item.split(" ").join("-"))
+  cart[item.split(" ").join("-")] = 0;
 
   let image_placeholder = document.createElement('div');
   image_placeholder.setAttribute('class',"image");
@@ -57,8 +58,32 @@ function addItemToMenu(item, price, img){
   dish_div.appendChild(btn_item);
   dish_div.appendChild(price_item);
   menu_item_btn.appendChild(dish_div);
-  menu_item_btn.addEventListener('click', () => {console.log(menu_item_btn.getAttribute('id'))});
+  menu_item_btn.addEventListener('click', () => {updateItemInCart(menu_item_btn.id) });
   
   return menu_item_btn;
 }
 
+
+function updateItemInCart(item_id){
+  console.log(`${item_id} was added to cart`);
+  cart[item_id]++;
+  console.log(cart) 
+  dispalyItemNumberCircle(item_id);
+}
+
+function dispalyItemNumberCircle(item_id){
+  if (cart[item_id]) {
+    let circle = document.querySelector(`#${item_id} .quantity`);
+    console.log(circle);
+    if (circle){
+      circle.innerHTML = cart[item_id];
+    }
+    else{
+      let circle = document.createElement('div');
+      circle.setAttribute("class", "quantity");
+      circle.innerHTML = cart[item_id];
+      let el = document.querySelector(`#${item_id}`);
+      el.appendChild(circle);
+    }
+  }
+}
