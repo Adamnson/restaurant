@@ -9,6 +9,16 @@ let cart = {};
 export function showMenu() {
   // console.log("menu button was clicked");
   // content_div.innerHTML = menu;
+  function dishes(name, price, image_link)    {
+      this.name= name;
+      this.price = price;
+      this.image = image_link;
+    }
+
+    let dosa = new dishes("Dosa", 50, dosaPic);
+    let vadaPav = new dishes("Vada Pav", 15, vadaPavPic);
+    let pizza = new dishes("Pizza Slice", 35, pizzaPic);
+    let poha = new dishes("Poha", 25, pohaPic);
 
   let container_div = document.createElement('div');
   container_div.setAttribute("class", "container");
@@ -16,14 +26,15 @@ export function showMenu() {
   menu_div.setAttribute("class","items-menu");
   content_div.appendChild(container_div);
   container_div.appendChild(menu_div);
-  menu_div.appendChild(addItemToMenu("Dosa", 50, dosaPic));
-  menu_div.appendChild(addItemToMenu("Vada Pav", 15, vadaPavPic));
-  menu_div.appendChild(addItemToMenu("Pizza Slice", 30, pizzaPic));
-  menu_div.appendChild(addItemToMenu("Poha", 25, pohaPic));
-
+  menu_div.appendChild(addItemToMenu(dosa));
+  menu_div.appendChild(addItemToMenu(vadaPav));
+  menu_div.appendChild(addItemToMenu(pizza));
+  menu_div.appendChild(addItemToMenu(poha));
 }
 
-function addItemToMenu(item, price, img){
+function addItemToMenu(dish){
+
+  let dashJoinedName = dish.name.split(" ").join("-");
 
   let item_container = document.createElement('div');
   item_container.setAttribute('class', "itemContainer");
@@ -38,38 +49,11 @@ function addItemToMenu(item, price, img){
 
   let menu_item_btn = document.createElement("button");
   menu_item_btn.setAttribute("class", "item");
-  menu_item_btn.setAttribute("id", item.split(" ").join("-"))
-  cart[item.split(" ").join("-")] = 0;
+  menu_item_btn.classList.add(dashJoinedName);
+  menu_item_btn.setAttribute("id", dashJoinedName)
+  cart[dashJoinedName] = 0;
 
-  let image_placeholder = document.createElement('div');
-  image_placeholder.setAttribute('class',"image");
-  image_placeholder.classList.add( item.split(" ").join("-"));;
-  let img_el = document.createElement("img");
-  img_el.src = img;
-  img_el.style.width = "100%";
-  img_el.style.maxHeight = "15vw";
-  img_el.style.borderRadius = "0.5rem";
-  img_el.style.marginTop = "0.1rem";
-  image_placeholder.appendChild(img_el);
-
-
-  let dish_div = document.createElement('div');
-  dish_div.setAttribute("class", "dish");
-  dish_div.classList.add(item.split(" ").join("-"));;
-
-  let btn_item = document.createElement("div");
-  btn_item.setAttribute('class',"name")
-  btn_item.classList.add( item.split(" ").join("-"));
-  btn_item.innerHTML = item;
-
-  let price_item = document.createElement("div");
-  price_item.classList.add( item.split(" ").join("-"));  price_item.innerHTML = price;
-  
-  menu_item_btn.appendChild(image_placeholder);
-  dish_div.appendChild(btn_item);
-  dish_div.appendChild(price_item);
-  menu_item_btn.appendChild(dish_div);
-  // menu_item_btn.addEventListener('click', () => {updateItemInCart(menu_item_btn.id) });
+  menu_item_btn = addImagePriceName(dish, menu_item_btn)
   
   item_container.appendChild(btn_minus);
   item_container.appendChild(menu_item_btn);
@@ -77,6 +61,40 @@ function addItemToMenu(item, price, img){
   return item_container;
 }
 
+function addImagePriceName(dish, menu_item_btn){
+
+  let item = dish.name;
+  let price = dish.price;
+  let img = dish.image;
+  let dashJoinedName = item.split(" ").join("-");
+
+  let image_placeholder = document.createElement('div');
+  image_placeholder.setAttribute('class',"image");
+  image_placeholder.classList.add(dashJoinedName);
+  let img_el = document.createElement("img");
+  img_el.src = img;
+  image_placeholder.appendChild(img_el);
+
+  let dish_div = document.createElement('div');
+  dish_div.setAttribute("class", "dish");
+  dish_div.classList.add(dashJoinedName);
+
+  let btn_item = document.createElement("div");
+  btn_item.setAttribute('class',"name")
+  btn_item.classList.add(dashJoinedName);
+  btn_item.innerHTML = item;
+
+  let price_item = document.createElement("div");
+  price_item.classList.add(dashJoinedName);
+  price_item.innerHTML = price;
+  
+  menu_item_btn.appendChild(image_placeholder);
+  dish_div.appendChild(btn_item);
+  dish_div.appendChild(price_item);
+  menu_item_btn.appendChild(dish_div);
+
+  return menu_item_btn;
+}
 
 function updateItemInCart(item_id, sign){
   if (sign === "+"){

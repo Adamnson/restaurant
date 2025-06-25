@@ -38,6 +38,13 @@
   border-radius: 0.5rem;
 }
 
+.image > img {
+  max-height: 15vh;
+  width: 100%;
+  border-radius: 0.5rem;
+  margin-top: 0.1rem;
+}
+
 .dish {
   min-height: 15vw;
   display: flex;
