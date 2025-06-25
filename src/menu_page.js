@@ -110,6 +110,8 @@ function dispalyItemNumberCircle(item_id){
       el.appendChild(circle);
     }
   }else {
-    circle.style.display = 'none';
+    if(circle){
+      circle.style.display = 'none';
+    }
   }
 }
