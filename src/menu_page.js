@@ -24,13 +24,11 @@ export function showMenu() {
 
   let current_menu = [dosa, vadaPav, pizza, poha];
 
-
   let menu_div = document.createElement("div");
   menu_div.setAttribute("class","items-menu");
   content_div.appendChild(menu_div);
 
   current_menu.forEach(el => { menu_div.appendChild(addItemToMenu(el))})
-
 }
 
 function addItemToMenu(dish){
