@@ -9,51 +9,54 @@ let cart = {};
 export function showMenu() {
   // console.log("menu button was clicked");
   // content_div.innerHTML = menu;
-  function dishes(name, price, image_link)    {
-      this.name= name;
-      this.price = price;
-      this.image = image_link;
+  class Dish {
+    constructor(name, price, image_link) {
+      this.name = name
+      this.price = price
+      this.image = image_link
     }
+  }
 
-    let dosa = new dishes("Dosa", 50, dosaPic);
-    let vadaPav = new dishes("Vada Pav", 15, vadaPavPic);
-    let pizza = new dishes("Pizza Slice", 35, pizzaPic);
-    let poha = new dishes("Poha", 25, pohaPic);
+  let dosa = new Dish("Dosa", 50, dosaPic);
+  let vadaPav = new Dish("Vada Pav", 15, vadaPavPic);
+  let pizza = new Dish("Pizza Slice", 35, pizzaPic);
+  let poha = new Dish("Poha", 25, pohaPic);
 
-  let container_div = document.createElement('div');
-  container_div.setAttribute("class", "container");
+  let current_menu = [dosa, vadaPav, pizza, poha];
+
+
   let menu_div = document.createElement("div");
   menu_div.setAttribute("class","items-menu");
-  content_div.appendChild(container_div);
-  container_div.appendChild(menu_div);
-  menu_div.appendChild(addItemToMenu(dosa));
-  menu_div.appendChild(addItemToMenu(vadaPav));
-  menu_div.appendChild(addItemToMenu(pizza));
-  menu_div.appendChild(addItemToMenu(poha));
+  content_div.appendChild(menu_div);
+
+  current_menu.forEach(el => { menu_div.appendChild(addItemToMenu(el))})
+
 }
 
 function addItemToMenu(dish){
 
   let dashJoinedName = dish.name.split(" ").join("-");
-
+  /* the outter most container */
   let item_container = document.createElement('div');
   item_container.setAttribute('class', "itemContainer");
+  /* plus button */
   let btn_plus = document.createElement("button");
   btn_plus.setAttribute('class', "plus");
   btn_plus.innerHTML = "+";
   btn_plus.addEventListener("click", () => {updateItemInCart(menu_item_btn.id, "+")});
+  /* minus button */
   let btn_minus = document.createElement("button");
   btn_minus.setAttribute('class', "minus");
   btn_minus.innerHTML = "-";
   btn_minus.addEventListener("click", () => {updateItemInCart(menu_item_btn.id, "-")});
-
+  /* central button with details of the dish*/
   let menu_item_btn = document.createElement("button");
   menu_item_btn.setAttribute("class", "item");
   menu_item_btn.classList.add(dashJoinedName);
   menu_item_btn.setAttribute("id", dashJoinedName)
-  cart[dashJoinedName] = 0;
-
   menu_item_btn = addImagePriceName(dish, menu_item_btn)
+
+  cart[dashJoinedName] = 0;
   
   item_container.appendChild(btn_minus);
   item_container.appendChild(menu_item_btn);
