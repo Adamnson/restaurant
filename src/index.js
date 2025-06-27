@@ -1,4 +1,5 @@
 import "./page_setup.js";
+import "./navbar.css"
 export * from "./home_page.js";
 export * from "./menu_page.js";
 export * from "./contact_us.js";

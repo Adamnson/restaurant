@@ -11,7 +11,7 @@ export function showMenu() {
   content_div.appendChild(menu_div);
   current_menu.forEach(el => { 
     menu_div.appendChild(addItemToMenu(el));
-    updateItemInCart(el.name.split(" ").join("-"), "0");
+    updateItemInCart(el.name.split(" ").join("-"), "}%{");
   })
 }
 
