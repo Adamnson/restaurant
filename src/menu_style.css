@@ -1,7 +1,3 @@
-.container {
-  border: 1rem solid purple;
-}
-
 .items-menu {
   margin: 2rem;
   min-height: 80vw;
@@ -11,9 +7,18 @@
   align-items: center;
 }
 
+.item-container {
+  min-width: 80%;
+  border: 0.5rem solid greenyellow;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 .item {
   min-height: 8rem;
-  min-width: max(8rem,40%);
+  min-width: max(8rem,min(40%,20rem));
   margin: 2rem;
   padding: 0.5rem;
   border: 5px dotted whitesmoke;
@@ -29,6 +34,13 @@
   border-radius: 0.5rem;
 }
 
+.image > img {
+  max-height: 15vh;
+  width: 100%;
+  border-radius: 0.5rem;
+  margin-top: 0.1rem;
+}
+
 .dish {
   min-height: 15vw;
   display: flex;
@@ -41,4 +53,27 @@
 .name {
   max-width: 50%;
   text-wrap: wrap;
+}
+
+.quantity {
+  border-radius:  50%;
+  height: 3rem;
+  width: 3rem;
+  font-size: 1.2rem;
+  background-color: red;
+  position: absolute;
+  /* top: 12%; */
+  /* bottom: 2rem; */
+  left: max(5rem,min(60%,85rem)) ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.plus,
+.minus {
+  border-radius: 50%;
+  height: 5rem;
+  width: 5rem;
+  font-size: 1.5rem;
 }
