@@ -1,34 +1,18 @@
 import "./menu_style.css"
-import dosaPic from "./dosa.jpg"
-import vadaPavPic from "./vada_pav.jpg"
-import pizzaPic from "./pizza.jpg"
-import pohaPic from "./poha.jpg"
+import { current_menu, cart } from "./page_setup"
 
 const content_div = document.querySelector("#content");
-let cart = {};
+
 export function showMenu() {
-  // console.log("menu button was clicked");
-  // content_div.innerHTML = menu;
-  class Dish {
-    constructor(name, price, image_link) {
-      this.name = name
-      this.price = price
-      this.image = image_link
-    }
-  }
-
-  let dosa = new Dish("Dosa", 50, dosaPic);
-  let vadaPav = new Dish("Vada Pav", 15, vadaPavPic);
-  let pizza = new Dish("Pizza Slice", 35, pizzaPic);
-  let poha = new Dish("Poha", 25, pohaPic);
-
-  let current_menu = [dosa, vadaPav, pizza, poha];
+  content_div.innerHTML = "";
 
   let menu_div = document.createElement("div");
   menu_div.setAttribute("class","items-menu");
   content_div.appendChild(menu_div);
-
-  current_menu.forEach(el => { menu_div.appendChild(addItemToMenu(el))})
+  current_menu.forEach(el => { 
+    menu_div.appendChild(addItemToMenu(el));
+    updateItemInCart(el.name.split(" ").join("-"), "0");
+  })
 }
 
 function addItemToMenu(dish){
@@ -53,8 +37,6 @@ function addItemToMenu(dish){
   menu_item_btn.classList.add(dashJoinedName);
   menu_item_btn.setAttribute("id", dashJoinedName)
   menu_item_btn = addImagePriceName(dish, menu_item_btn)
-
-  cart[dashJoinedName] = 0;
   
   item_container.appendChild(btn_minus);
   item_container.appendChild(menu_item_btn);
