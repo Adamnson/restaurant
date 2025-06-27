@@ -8,3 +8,32 @@ nav > button {
   width: 100%;
   font-size: 1.5rem;
 }
+
+.welcome-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 100%;
+  background-image: url("./home_background.png");
+  background-size: cover;
+  background-blend-mode:difference;
+  color: red;
+  height: 89vh;
+}
+
+.welcome-container > p {
+  margin-block: 1rem;
+}
+
+#line-1 {
+  margin-top: 10vw;
+  font-size: 1.5rem;
+}
+
+#line-2 {
+  font-size: 5rem;
+}
+
+#line-3 {
+  font-size: 2rem;
+}
