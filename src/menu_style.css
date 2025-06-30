@@ -1,7 +1,6 @@
 .items-menu {
   margin: 2rem;
   min-height: 80vw;
-  border: 0.5rem dotted gold;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,7 +8,6 @@
 
 .item-container {
   min-width: 80%;
-  border: 0.5rem solid greenyellow;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -21,23 +19,21 @@
   min-width: max(8rem,min(40%,20rem));
   margin: 2rem;
   padding: 0.5rem;
-  border: 5px dotted whitesmoke;
-  border-radius: 1rem;
+  border-radius: 5rem 0.5rem 5rem 0.5rem;
   display: grid;
   grid-template-rows: 1fr/ 1fr 1fr;
-  background-color: palegreen;
+  background-color: rgb(105, 139, 177);
 }
 
 .image{
   background-color: whitesmoke;
-  min-height: 15vw;
-  border-radius: 0.5rem;
+  border-radius: 5rem 0.5rem 5rem 0.5rem;
 }
 
 .image > img {
   max-height: 15vh;
   width: 100%;
-  border-radius: 0.5rem;
+  border-radius: 5rem 0.5rem 5rem 0.5rem;
   margin-top: 0.1rem;
 }
 
@@ -62,8 +58,6 @@
   font-size: 1.2rem;
   background-color: red;
   position: absolute;
-  /* top: 12%; */
-  /* bottom: 2rem; */
   left: max(5rem,min(60%,85rem)) ;
   display: flex;
   justify-content: center;
@@ -72,8 +66,17 @@
 
 .plus,
 .minus {
-  border-radius: 50%;
   height: 5rem;
   width: 5rem;
   font-size: 1.5rem;
+}
+
+.minus {
+  border-radius: 50% 10% 50% 10%;
+  background-color: rgb(137, 32, 32);
+}
+
+.plus {
+  border-radius: 10% 50% 10% 50%;
+  background-color: green;
 }
