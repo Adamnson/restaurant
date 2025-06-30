@@ -1,0 +1,39 @@
+
+.welcome-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 100%;
+  background-image: url("./pexels-pixabay-460537.jpg");
+  background-size: cover;
+  background-position: center;
+  background-blend-mode:difference;
+  color: rgb(176, 42, 64);
+  height: 89vh;
+}
+
+
+.welcome-text {
+  margin-top: 10vw;
+  border: 1.5rem double white;
+  border-radius: 5rem 0 5rem 0;
+  background-color: bisque;
+  opacity: 0.9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-inline: 1rem;
+}
+
+#line-1 {
+  font-size: 1.5rem;
+}
+
+#line-2 {
+  margin-block: 2rem;
+  font-size: 5rem;
+}
+
+#line-3 {
+  font-size: 2rem;
+}
